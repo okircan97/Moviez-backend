@@ -13,10 +13,13 @@ mongoose
     console.log("An error occurred while connting to MongoDB");
   });
 
+// Models
 require("./Models/movies.model");
 
 // The server stuff.
 const app = express();
+// Accept the JSOn payloads.
+app.use(express.json());
 
 app.post("/api/movies", addMovie);
 
