@@ -3,6 +3,7 @@ require("dotenv").config();
 const addMovie = require("./Controllers/addMovie");
 const getAllMovies = require("./Controllers/getAllMovies");
 const getSingleMovie = require("./Controllers/getSingleMovie");
+const editMovie = require("./Controllers/editMovie");
 const mongoose = require("mongoose");
 
 // Connect to MongoDB.
@@ -27,6 +28,7 @@ app.use(express.json());
 app.post("/api/movies", addMovie);
 app.get("/api/movies", getAllMovies);
 app.get("/api/movies/:name", getSingleMovie);
+app.patch("/api/movies", editMovie);
 
 // Listen the server.
 app.listen(8000, () => {
