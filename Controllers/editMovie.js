@@ -1,4 +1,3 @@
-const { getCipherInfo } = require("crypto");
 const mongoose = require("mongoose");
 
 const editMovie = async (req, res) => {

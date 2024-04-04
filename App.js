@@ -4,6 +4,7 @@ const addMovie = require("./Controllers/addMovie");
 const getAllMovies = require("./Controllers/getAllMovies");
 const getSingleMovie = require("./Controllers/getSingleMovie");
 const editMovie = require("./Controllers/editMovie");
+const deleteMovie = require("./Controllers/deleteMovie");
 const mongoose = require("mongoose");
 
 // Connect to MongoDB.
@@ -29,6 +30,7 @@ app.post("/api/movies", addMovie);
 app.get("/api/movies", getAllMovies);
 app.get("/api/movies/:name", getSingleMovie);
 app.patch("/api/movies", editMovie);
+app.delete("/api/movies/:id", deleteMovie);
 
 // Listen the server.
 app.listen(8000, () => {
