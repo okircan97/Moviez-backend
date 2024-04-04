@@ -1,6 +1,8 @@
 const express = require("express");
 require("dotenv").config();
 const addMovie = require("./Controllers/addMovie");
+const getAllMovies = require("./Controllers/getAllMovies");
+const getSingleMovie = require("./Controllers/getSingleMovie");
 const mongoose = require("mongoose");
 
 // Connect to MongoDB.
@@ -18,10 +20,13 @@ require("./Models/movies.model");
 
 // The server stuff.
 const app = express();
-// Accept the JSOn payloads.
+// Accept the JSON payloads.
 app.use(express.json());
 
+// Handle the requests.
 app.post("/api/movies", addMovie);
+app.get("/api/movies", getAllMovies);
+app.get("/api/movies/:name", getSingleMovie);
 
 // Listen the server.
 app.listen(8000, () => {
