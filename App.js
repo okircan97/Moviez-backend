@@ -1,5 +1,6 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 const addMovie = require("./Controllers/addMovie");
 const getAllMovies = require("./Controllers/getAllMovies");
 const getSingleMovie = require("./Controllers/getSingleMovie");
@@ -24,6 +25,8 @@ require("./Models/movies.model");
 const app = express();
 // Accept the JSON payloads.
 app.use(express.json());
+//Configure CORS.
+app.use(cors());
 
 // Handle the requests.
 app.post("/api/movies", addMovie);
