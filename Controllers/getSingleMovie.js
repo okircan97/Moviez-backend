@@ -5,7 +5,7 @@ const getSingleMovie = async (req, res) => {
 
   try {
     const movie = await moviesModel.findOne({
-      movie_name: req.params.name,
+      _id: req.params.id,
     });
 
     res.status(200).json({

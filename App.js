@@ -31,7 +31,7 @@ app.use(cors());
 // Handle the requests.
 app.post("/api/movies", addMovie);
 app.get("/api/movies", getAllMovies);
-app.get("/api/movies/:name", getSingleMovie);
+app.get("/api/movies/:id", getSingleMovie);
 app.patch("/api/movies", editMovie);
 app.delete("/api/movies/:id", deleteMovie);
 
