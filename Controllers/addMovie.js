@@ -4,7 +4,7 @@ const addMovie = async (req, res) => {
   const moviesModel = mongoose.model("movies");
 
   // Deconstruct the req to ignore irrelevant stuff.
-  const { movie_name, info, rating } = req.body;
+  const { movie_name, info, rating, image_url } = req.body;
 
   // Check for validations.
   try {
@@ -25,6 +25,7 @@ const addMovie = async (req, res) => {
       movie_name: movie_name,
       info: info,
       rating: rating,
+      image_url: image_url,
     });
   } catch (e) {
     res.status(400).json({
