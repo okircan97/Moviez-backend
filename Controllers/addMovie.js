@@ -7,33 +7,14 @@ const addMovie = async (req, res) => {
   const { movie_name, info, rating, image_url } = req.body;
 
   // Check for validations.
-  try {
-    // if (!movie_name) throw "Movie name can not be empty.";
-    // if (!info) throw "Info can not be empty.";
-    // if (!rating) throw "Rating can not be empty.";
-    if (rating < 1 || rating > 10) throw "Rating value must be between 1-10.";
-  } catch (e) {
-    res.status(400).json({
-      status: "Fail",
-      message: e,
-    });
-  }
+  if (rating < 1 || rating > 10) throw "Rating value must be between 1-10.";
 
-  // Wait for the response.
-  try {
-    await moviesModel.create({
-      movie_name: movie_name,
-      info: info,
-      rating: rating,
-      image_url: image_url,
-    });
-  } catch (e) {
-    res.status(400).json({
-      status: "Fail",
-      message: e.message,
-    });
-    return;
-  }
+  await moviesModel.create({
+    movie_name: movie_name,
+    info: info,
+    rating: rating,
+    image_url: image_url,
+  });
 
   res.status(200).json({
     status: "Success",

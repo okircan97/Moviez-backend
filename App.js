@@ -1,3 +1,4 @@
+require("express-async-errors");
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
@@ -6,6 +7,7 @@ const getAllMovies = require("./Controllers/getAllMovies");
 const getSingleMovie = require("./Controllers/getSingleMovie");
 const editMovie = require("./Controllers/editMovie");
 const deleteMovie = require("./Controllers/deleteMovie");
+const errorHandler = require("./Handlers/errorHandler");
 const mongoose = require("mongoose");
 
 // Connect to MongoDB.
@@ -34,6 +36,9 @@ app.get("/api/movies", getAllMovies);
 app.get("/api/movies/:id", getSingleMovie);
 app.patch("/api/movies/:id", editMovie);
 app.delete("/api/movies/:id", deleteMovie);
+
+// Error handling with express-async-errors.
+app.use(errorHandler);
 
 // Listen the server.
 app.listen(8000, () => {
